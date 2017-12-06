@@ -26,7 +26,7 @@ public class Region implements Serializable {
       private String nomRegion;
     @ManyToOne
     private Classe classe;
-
+  
     public String getId() {
         return id;
     }

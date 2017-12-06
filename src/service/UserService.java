@@ -16,6 +16,7 @@ public class UserService extends AbstractFacade<User> {
     public UserService() {
         super(User.class);
     }
+
     public int seConnecter(User user)
     {
         User loadedUser= find(user.getId());
