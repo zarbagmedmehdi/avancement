@@ -3,12 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Service;
+package service;
 
 import bean.Echelle;
-import bean.Echellon;
-import java.util.List;
-import static javax.xml.ws.Endpoint.create;
 
 /**
  *
@@ -19,24 +16,26 @@ public class EchelleService extends AbstractFacade<Echelle> {
     public EchelleService() {
         super(Echelle.class);
     }
-    public int creerEchelle( String nom)
+    public int creerEchelle( String id,String nom,double salaireBase)
     {
-        Echelle echelle=new Echelle();
+        Echelle echelle=new Echelle(null, null, 0);
   
         echelle.setNom(nom);
+        echelle.setSalaireBase(salaireBase);
+        echelle.setId(id);
         create(echelle);
         return 1;
     }
     public void initDb()
      {
-         creerEchelle( "femmeDeMenege");
-         creerEchelle("agentDeSecurite");
-         creerEchelle("Gardinier");
-         creerEchelle("Doctorant");
-         creerEchelle("Technicien");
-         creerEchelle("FonctionnaireAdministrative");
-         creerEchelle("ProfAsssistant");
-         creerEchelle("PES");
+         creerEchelle("E4","femmeDeMenage",2000);
+         creerEchelle("E5","agentDeSecurite",2100);
+         creerEchelle("E6","jardinier",2000);
+         creerEchelle("E7","Doctorant",2500);
+         creerEchelle("E8","Technicien",4000);
+         creerEchelle("E9","FonctionnaireAdministrative",5000);
+         creerEchelle("E10","ProfAsssistant",7500);
+         creerEchelle("E11","PES",9000);
      }
     
 }

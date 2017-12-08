@@ -3,30 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Service;
+package service;
 
 import bean.Echellon;
-import bean.Region;
-import static javax.xml.ws.Endpoint.create;
 
 /**
  *
  * @author hp
  */
 public class EchellonService extends AbstractFacade<Echellon> {
-    
+    EchelleService es= new EchelleService();
     public EchellonService() {
         super(Echellon.class);
     }
-    public int creerEchellon (int Number, double mantant)
+    public int creerEchellon (String id , int Number,  double mantant)
     {
-       Echellon echellon=new Echellon();
-        if(echellon==null)
-        {
-            return -1;
-        }
-        else
-            
+      Echellon echellon=new Echellon();
+              
+            echellon.setId(id);
         echellon.setNumber(Number);
         echellon.setMantant(mantant);
 
@@ -35,20 +29,22 @@ public class EchellonService extends AbstractFacade<Echellon> {
         return 1;
     }
      public void initDb()
-     {
-         creerEchellon(366,100);
-         creerEchellon(369,125);
-         creerEchellon(403,150);
-         creerEchellon(436,175);
-         creerEchellon(472,200);
-         creerEchellon(509,225);
-         creerEchellon(542,250);
-         creerEchellon(606,275);
-         creerEchellon(639,300);
-         creerEchellon(675,325);
-         creerEchellon(680,350);
-         creerEchellon(690,375);
-         creerEchellon(704,400);
+     { 
+         creerEchellon("e1",366,100);
+         creerEchellon("e2",369,125);
+         creerEchellon("e3",403,150);
+         creerEchellon("e4",436,175);
+         creerEchellon("e5",472,200);
+         creerEchellon("e6",509,225);
+         creerEchellon("e7",542,250);
+         creerEchellon("e8",606,275);
+         creerEchellon("e9",639,300);
+         creerEchellon("e10",675,325);
+         creerEchellon("e11",680,350);
+         creerEchellon("e12",690,375);
+         creerEchellon("e13",704,400);
+        
+         
          
     }
     
