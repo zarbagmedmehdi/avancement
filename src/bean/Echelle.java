@@ -23,7 +23,32 @@ public class Echelle implements Serializable {
     
     private String id;
     private String nom;
+    private double SalaireBase;
 
+    public Echelle() {
+    }
+
+    public Echelle(String id) {
+        this.id = id;
+    }
+
+    public Echelle(String id, String nom, double SalaireBase) {
+        this.id = id;
+        this.nom = nom;
+        this.SalaireBase = SalaireBase;
+    }
+
+    
+   
+
+   
+    public double getSalaireBase() {
+        return SalaireBase;
+    }
+
+    public void setSalaireBase(double SalaireBase) {
+        this.SalaireBase = SalaireBase;
+    }
     public String getNom() {
         return nom;
     }
@@ -39,19 +64,7 @@ public class Echelle implements Serializable {
     public void setId(String id) {
         this.id = id;
     }
-
-    public Echelle(String id, String nom) {
-        this.id = id;
-        this.nom = nom;
-    }
-
-    public Echelle(String id) {
-        this.id = id;
-    }
-
-    public Echelle() {
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -74,7 +87,8 @@ public class Echelle implements Serializable {
 
     @Override
     public String toString() {
-        return "Echelle{" + "id=" + id + ", nom=" + nom +  '}';
+        return "Echelle{" + "id=" + id + ", nom=" + nom + ", SalaireBase=" + SalaireBase + '}';
     }
+
     
 }
