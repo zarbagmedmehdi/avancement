@@ -17,13 +17,16 @@ public class ResponsabiliteService extends AbstractFacade<Responsabilité> {
     public ResponsabiliteService() {
         super(Responsabilité.class);
     }
-                    public int creerRes(String id, String nom, String idEchelleMin, double montant)
+    public int creerRes(String id, String nom, String idEchelleMin, float montant)
     {
         
         Responsabilité res=new Responsabilité();
-      Echelle e=es.find(idEchelleMin);
+      Echelle echelle=es.find(idEchelleMin);
+      if (echelle==null){
+          return -1;
+      }
       
-         
+      res.setEchelleMin(echelle);
         res.setId(id);
        res.setNom(nom);
         res.setMontant(montant);
@@ -32,13 +35,15 @@ public class ResponsabiliteService extends AbstractFacade<Responsabilité> {
         return 1;
         
     
-    } 
+    }
+//    public int update
+   
                     
                      public void initDb(){
 //      creerRes("R1", "doyen", "E11", 5000);
 //     creerRes("R2", "vice doyen", "E11", 4000);
 //     creerRes("R3", "cordinateur MIPC ", "E10",3000);
-     creerRes("R4", "cordinateur BCG ", "E10",3000);
-     creerRes("R5", "chef scolarité ", "E9",2500);
+//     creerRes("R4", "cordinateur BCG ", "E10",3000);
+//     creerRes("R5", "chef scolarité ", "E9",2500);
      }
 }
