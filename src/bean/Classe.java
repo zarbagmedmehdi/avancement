@@ -23,7 +23,7 @@ public class Classe implements Serializable {
    
     private String id;
     private String nom;
-    private double coef;
+    private float coef;
     
     public String getId() {
         return id;
@@ -40,7 +40,7 @@ public class Classe implements Serializable {
         this.id = id;
     }
 
-    public Classe(String id, String nom, double coef) {
+    public Classe(String id, String nom, float coef) {
         this.id = id;
         this.nom = nom;
         this.coef = coef;
@@ -59,11 +59,11 @@ public class Classe implements Serializable {
         this.nom = nom;
     }
 
-    public double getCoef() {
+    public float getCoef() {
         return coef;
     }
 
-    public void setCoef(double coef) {
+    public void setCoef(float coef) {
         this.coef = coef;
     }
    

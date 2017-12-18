@@ -26,7 +26,7 @@ public class Responsabilité implements Serializable {
      private String nom;
     @ManyToOne
     private Echelle echelleMin;
-    private double montant;
+    private float montant;
 
     public String getNom() {
         return nom;
@@ -44,15 +44,15 @@ public class Responsabilité implements Serializable {
         this.echelleMin = echelleMin;
     }
 
-    public double getMontant() {
+    public float getMontant() {
         return montant;
     }
 
-    public void setMontant(double montant) {
+    public void setMontant( float montant) {
         this.montant = montant;
     }
 
-    public Responsabilité(String id, String nom, Echelle echelleMin, double montant) {
+    public Responsabilité(String id, String nom, Echelle echelleMin,  float montant) {
         this.id = id;
         this.nom = nom;
         this.echelleMin = echelleMin;

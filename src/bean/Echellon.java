@@ -24,9 +24,9 @@ public class Echellon implements Serializable {
      private int Number;
     @ManyToOne
     private Echelle echelle;
-    private double mantant;
+    private float mantant;
 
-    public Echellon(String id, int Number, Echelle echelle, double mantant) {
+    public Echellon(String id, int Number, Echelle echelle, float mantant) {
         this.id = id;
         this.Number = Number;
         this.echelle = echelle;
@@ -64,11 +64,11 @@ public class Echellon implements Serializable {
         this.echelle = echelle;
     }
 
-    public double getMantant() {
+    public float getMantant() {
         return mantant;
     }
 
-    public void setMantant(double mantant) {
+    public void setMantant(float mantant) {
         this.mantant = mantant;
     }
 
