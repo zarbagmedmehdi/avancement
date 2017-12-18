@@ -28,5 +28,15 @@ public class EntiteService extends AbstractFacade<EntiteAdministrative> {
         return 1;
 
     }
+     void initDb(){
+            
+     creerEntite("EN1","decanat" , null);
+      creerEntite("EN2","scolarité" , null);
+       creerEntite("EN3","bibliotheque" , null);
+       creerEntite("EN4","depMath" , null);
+        creerEntite("EN5","depInfo" , null);
+         creerEntite("EN6","depchimie" , null);
+       
     
+}
 }

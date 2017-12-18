@@ -16,7 +16,7 @@ public class EchelleService extends AbstractFacade<Echelle> {
     public EchelleService() {
         super(Echelle.class);
     }
-    public int creerEchelle( String id,String nom,double salaireBase)
+    public int creerEchelle( String id,String nom,float  salaireBase)
     {
         Echelle echelle=new Echelle(null, null, 0);
   
@@ -28,7 +28,7 @@ public class EchelleService extends AbstractFacade<Echelle> {
     }
     public void initDb()
      {
-         creerEchelle("E4","femmeDeMenage",2000);
+         creerEchelle("E4","echelle4",2000);
          creerEchelle("E5","agentDeSecurite",2100);
          creerEchelle("E6","jardinier",2000);
          creerEchelle("E7","Doctorant",2500);

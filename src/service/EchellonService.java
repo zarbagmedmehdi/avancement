@@ -16,7 +16,7 @@ public class EchellonService extends AbstractFacade<Echellon> {
     public EchellonService() {
         super(Echellon.class);
     }
-    public int creerEchellon (String id , int Number,  double mantant)
+    public int creerEchellon (String id , int Number,  float mantant)
     {
       Echellon echellon=new Echellon();
               

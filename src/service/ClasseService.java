@@ -18,7 +18,7 @@ public class ClasseService extends AbstractFacade<Classe> {
         super(Classe.class);
     }
 
-    public int creerClasse(String id, String nom, double coef) {
+    public int creerClasse(String id, String nom, float coef) {
 
         Classe classe = new Classe();
 
