@@ -5,6 +5,7 @@
  */
 package service;
 
+import Util.DateUtil;
 import bean.Classe;
 import bean.Echelle;
 import bean.Echellon;
@@ -25,14 +26,14 @@ public class SalarieService  extends AbstractFacade<Salarie> {
     EchellonService ees=new EchellonService();
     RegionService rs= new RegionService();
     EntiteService ens=new EntiteService();
-    MandatService ms=new MandatService();
+    
     
     public SalarieService() {
         super(Salarie.class);
     }
     public int creerSalarie(String id, String nom, String prenom, String dateDeNaissance, String dateDEmbauche, 
- String idEntite,String idEchelle,String grade,  String echellon, String idchef, 
- boolean celibataire,  String idRegion, int nbEnfent,  float commission){
+ EntiteAdministrative  entiteAdministrative ,Echelle echelle,String grade,  String echellon, String idchef, 
+ boolean celibataire, Region region, int nbEnfent,  float commission){
   Salarie sal= new Salarie();
   Salarie chef =new Salarie();
   chef=find(idchef);
@@ -46,11 +47,16 @@ public class SalarieService  extends AbstractFacade<Salarie> {
   sal.setNom(nom);
   sal.setPrenom(prenom);
   sal.setCommission(commission);
+  Date dateN=DateUtil.parse(dateDeNaissance);
+  Date dateE=DateUtil.parse(dateDEmbauche);
+  sal.setDateDeNaissance(dateN);
+  sal.setDateDEmbauche(dateE);
+  
   
   sal.setGrade(grade);
-  sal.setEchelle(es.find(idEchelle));
-  sal.setRegion(rs.find(idRegion));
-  sal.setEntiteADministrative(ens.find(idEntite));
+  sal.setEchelle(echelle);
+  sal.setRegion(region);
+  sal.setEntiteADministrative( entiteAdministrative);
   sal.setSalaire(calculSalaire(sal));
   return 1;
     }
@@ -76,7 +82,24 @@ public float calculSalaire(Salarie sal)
     
     
 }
+    public List<Salarie>findByEchelle(String iDechelle)
+ {
+    return getEntityManager().createQuery("SELECT s FROM Salarie S WHERE S.echelle.iDechelle='" +iDechelle+ "'").getResultList();
+  
+ }
+//    a)	Vérifier que l’employé possède une échelle supérieure à l’échelle minimale exigée par la responsabilité.
+       public int save(Mandat mandat,Salarie salarie) 
+      {
+          Responsabilité   res=new  Responsabilité();
+          res=mandat.getResponsabilite();
+          
+           if(salarie.getEchelle().getId().equals(res.getEchelleMin().getId()))
+           {
+              return 1; 
+           }
+           else 
+               return -1;
 
-    
-    
+      }
+
 }
