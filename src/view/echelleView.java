@@ -5,18 +5,26 @@
  */
 package view;
 
+import bean.Echelle;
+import java.util.ArrayList;
+import java.util.List;
+import service.EchelleService;
+
 /**
  *
  * @author hp
  */
 public class echelleView extends javax.swing.JFrame {
+    private EchelleService echelleService =new EchelleService();
+    private List<Echelle> echelles=new ArrayList();
 
     /**
      * Creates new form echelleView
      */
-    public echelleView() {
+    public echelleView() { 
         initComponents();
     }
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
