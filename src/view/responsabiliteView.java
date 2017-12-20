@@ -9,21 +9,24 @@ import bean.Echelle;
 import bean.Responsabilité;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import service.EchelleService;
 import service.ResponsabiliteService;
-
+ 
 /**
  *
  * @author hp
  */
+
 public class responsabiliteView extends javax.swing.JFrame {
 ResponsabiliteService rs=new ResponsabiliteService();
 EchelleService es=new EchelleService();
  private List<Echelle> echelles1 =new ArrayList();
  private List<Echelle> echelles2 =new ArrayList();
   List<Responsabilité> respos=new ArrayList();
+   
     /**
      * Creates new form responsabiliteView
      */
@@ -32,6 +35,7 @@ EchelleService es=new EchelleService();
        initCombox1();
         initCombox2();
          initCombox3();
+         coucou();
        
     }
 
@@ -105,6 +109,12 @@ EchelleService es=new EchelleService();
 
         jLabel5.setText("Les responsabilités");
 
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+
         jLabel6.setText("nom:");
 
         jLabel7.setText("montant:");
@@ -129,6 +139,11 @@ EchelleService es=new EchelleService();
         });
 
         jCheckBox2.setText("montant");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
 
         jCheckBox3.setText("echelle minimum");
         jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
@@ -189,12 +204,11 @@ EchelleService es=new EchelleService();
                                 .addGap(18, 18, 18)
                                 .addComponent(jCheckBox2)
                                 .addGap(33, 33, 33)
-                                .addComponent(jCheckBox3)))
-                        .addGap(11, 11, 11))
+                                .addComponent(jCheckBox3))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(281, 281, 281)
                         .addComponent(jLabel5)))
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addContainerGap(210, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton2)
@@ -234,18 +248,18 @@ EchelleService es=new EchelleService();
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                         .addComponent(jButton2)
                         .addGap(179, 179, 179))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(33, 33, 33)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jCheckBox1)
-                                .addComponent(jCheckBox2)
-                                .addComponent(jCheckBox3))
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(47, 47, 47)
-                            .addComponent(jButton1)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jCheckBox1)
+                                    .addComponent(jCheckBox2)
+                                    .addComponent(jCheckBox3)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(jButton1)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -270,8 +284,15 @@ EchelleService es=new EchelleService();
 //     res.setMontant(Float.parseFloat (jTextField3.getText()));
 //     return res ;
 //}
-
+private void coucou(){
+    
+     jTextField4.setVisible(false);
+      jTextField5.setVisible(jCheckBox1.isSelected());
+       jComboBox3.setVisible(jCheckBox1.isSelected());
+}
  private void initCombox1(){
+      
+         
        echelles1=es.findAll();
             jComboBox1.addItem("---select---");
             for (int i = 0; i < echelles1.size(); i++) {
@@ -317,14 +338,24 @@ EchelleService es=new EchelleService();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         Responsabilité res= respos.get(jComboBox2.getSelectedIndex());
-         if (jCheckBox1.isSelected()){
-             if(jTextField4.getText().length()!=0)
-             {
-                 
-             }
-         }
+//         Responsabilité res= respos.get(jComboBox2.getSelectedIndex());
+//         if (jCheckBox1.isSelected()){
+//             if(jTextField4.getText().length()!=0)
+//             {
+//               res.setNom(jTextField4.getText());
+//             }
+//         }
+//         if (jCheckBox2.isSelected()){
+//             if(jTextField5.getText().length()!=0)
+//             {
+//               res.setMontant((jTextField4.getText()));
+//             }
+//         }
     }//GEN-LAST:event_jButton2ActionPerformed
+  
+    
+
+  
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
@@ -332,11 +363,21 @@ EchelleService es=new EchelleService();
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
+        jTextField4.setVisible(jCheckBox1.is);
+        
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
      * @param args the command line arguments
