@@ -5,6 +5,7 @@
  */
 package service;
 
+import Util.DateUtil;
 import bean.Classe;
 import bean.Echelle;
 import bean.Echellon;
@@ -21,39 +22,49 @@ import java.util.List;
  * @author user
  */
 public class SalarieService  extends AbstractFacade<Salarie> {
-    EchelleService es=new EchelleService();
-    EchellonService ees=new EchellonService();
-    RegionService rs= new RegionService();
-    EntiteService ens=new EntiteService();
-    MandatService ms=new MandatService();
+//    EchelleService es=new EchelleService();
+//    EchellonService ees=new EchellonService();
+//    RegionService rs= new RegionService();
+//    EntiteService ens=new EntiteService();
+    
     
     public SalarieService() {
         super(Salarie.class);
     }
     public int creerSalarie(String id, String nom, String prenom, String dateDeNaissance, String dateDEmbauche, 
- String idEntite,String idEchelle,String grade,  String echellon, String idchef, 
- boolean celibataire,  String idRegion, int nbEnfent,  float commission){
-  Salarie sal= new Salarie();
-  Salarie chef =new Salarie();
-  chef=find(idchef);
+ EntiteAdministrative  entiteAdministrative ,Echelle echelle,String grade,  Echellon echellon, Salarie chef, 
+ boolean celibataire, Region region, int nbEnfent,  float commission){
   
-  if(chef==null){
-      return -1;
-  } else {
+        
+        Salarie sal= new Salarie();
+  
+ 
+//  
+//  if(chef==null){
+//      return -1;
+//  } else {
+sal.setId(id);
   sal.setChef(chef);
   sal.setCelibataire(celibataire);
   sal.setNbEnfent(nbEnfent);
   sal.setNom(nom);
   sal.setPrenom(prenom);
   sal.setCommission(commission);
+  Date dateN=DateUtil.parse(dateDeNaissance);
+  Date dateE=DateUtil.parse(dateDEmbauche);
+  sal.setDateDeNaissance(dateN);
+  sal.setDateDEmbauche(dateE);
+  sal.setEchellon(echellon);
   
   sal.setGrade(grade);
-  sal.setEchelle(es.find(idEchelle));
-  sal.setRegion(rs.find(idRegion));
-  sal.setEntiteADministrative(ens.find(idEntite));
-  sal.setSalaire(calculSalaire(sal));
+  sal.setEchelle(echelle);
+  sal.setRegion(region);
+  sal.setEntiteADministrative( entiteAdministrative);
+  
+//  sal.setSalaire(calculSalaire(sal));
+  create(sal);
   return 1;
-    }
+//    }
 }
 public float calculSalaire(Salarie sal)
 { Echelle echelle=sal.getEchelle();
@@ -76,7 +87,24 @@ public float calculSalaire(Salarie sal)
     
     
 }
+    public List<Salarie>findByEchelle(String iDechelle)
+ {
+    return getEntityManager().createQuery("SELECT s FROM Salarie S WHERE S.echelle.iDechelle='" +iDechelle+ "'").getResultList();
+  
+ }
+//    a)	Vérifier que l’employé possède une échelle supérieure à l’échelle minimale exigée par la responsabilité.
+       public int save(Mandat mandat,Salarie salarie) 
+      {
+          Responsabilité   res=new  Responsabilité();
+          res=mandat.getResponsabilite();
+          
+           if(salarie.getEchelle().getId().equals(res.getEchelleMin().getId()))
+           {
+              return 1; 
+           }
+           else 
+               return -1;
 
-    
-    
+      }
+
 }

@@ -16,16 +16,14 @@ public class EchelleService extends AbstractFacade<Echelle> {
     public EchelleService() {
         super(Echelle.class);
     }
-    public int creerEchelle( String id,String nom,float  salaireBase,int nb)
+    public int creerEchelle( String id,String nom,float  salaireBase ,int nb)
     {
         Echelle echelle=new Echelle();
-  
+        echelle.setNb(nb);
         echelle.setNom(nom);
         echelle.setSalaireBase(salaireBase);
         echelle.setId(id);
-        echelle.setNb(nb);
         create(echelle);
-        
         return 1;
     }
     public void initDb()

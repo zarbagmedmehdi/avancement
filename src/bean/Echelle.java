@@ -25,22 +25,6 @@ public class Echelle implements Serializable {
     private String nom;
     private float SalaireBase;
     private int nb;
-  
-
-    public Echelle() {
-    }
-
-    public Echelle(String id) {
-        this.id = id;
-    }
-
-    public Echelle(String id, String nom, float SalaireBase,int nb) {
-        this.id = id;
-        this.nom = nom;
-        this.SalaireBase = SalaireBase;
-        this.nb=nb;
-        
-    }
 
     public int getNb() {
         return nb;
@@ -49,6 +33,22 @@ public class Echelle implements Serializable {
     public void setNb(int nb) {
         this.nb = nb;
     }
+
+    public Echelle() {
+    }
+
+    public Echelle(String id) {
+        this.id = id;
+    }
+
+    public Echelle(String id, String nom, float SalaireBase, int nb) {
+        this.id = id;
+        this.nom = nom;
+        this.SalaireBase = SalaireBase;
+        this.nb = nb;
+    }
+
+  
 
     
    
@@ -102,6 +102,7 @@ public class Echelle implements Serializable {
         return "Echelle{" + "id=" + id + ", nom=" + nom + ", SalaireBase=" + SalaireBase + ", nb=" + nb + '}';
     }
 
+   
 
     
 }

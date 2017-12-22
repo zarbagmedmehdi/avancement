@@ -35,7 +35,7 @@ EchelleService es=new EchelleService();
        initCombox1();
         initCombox2();
          initCombox3();
-         coucou();
+//         coucou();
        
     }
 
@@ -284,12 +284,12 @@ EchelleService es=new EchelleService();
 //     res.setMontant(Float.parseFloat (jTextField3.getText()));
 //     return res ;
 //}
-private void coucou(){
-    
-     jTextField4.setVisible(false);
-      jTextField5.setVisible(jCheckBox1.isSelected());
-       jComboBox3.setVisible(jCheckBox1.isSelected());
-}
+//private void coucou(){
+//    
+//     jTextField4.setVisible(false);
+//      jTextField5.setVisible(jCheckBox1.isSelected());
+//       jComboBox3.setVisible(jCheckBox1.isSelected());
+//}
  private void initCombox1(){
       
          
@@ -363,7 +363,7 @@ private void coucou(){
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
-        jTextField4.setVisible(jCheckBox1.is);
+        jTextField4.setVisible(true);
         
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 

@@ -5,7 +5,9 @@
  */
 package service;
 
+import bean.Echelle;
 import bean.Echellon;
+import java.util.List;
 
 /**
  *
@@ -47,5 +49,12 @@ public class EchellonService extends AbstractFacade<Echellon> {
          
          
     }
+       public List<Echellon>findByEchelle(String idEchelle) {
+          
+       return getEntityManager().createQuery(" select e FROM Echellon e "
+                + " WHERE e.echelle.id='" +idEchelle + "'").getResultList();
+     }
+       
+       
     
 }
