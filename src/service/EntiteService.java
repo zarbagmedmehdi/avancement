@@ -15,28 +15,28 @@ public class EntiteService extends AbstractFacade<EntiteAdministrative> {
     public EntiteService() {
         super(EntiteAdministrative.class);
     }
-     public int creerEntite(String id, String nom, Salarie chef) {
+     public int creerEntite(String id, String nom) {
 
         EntiteAdministrative e = new EntiteAdministrative();
 
         e.setId(id);
         e.setNom(nom);
         
-        e.setChef(chef);
+       
         create(e);
 
         return 1;
 
     }
-     void initDb(){
-            
-     creerEntite("EN1","decanat" , null);
-      creerEntite("EN2","scolarité" , null);
-       creerEntite("EN3","bibliotheque" , null);
-       creerEntite("EN4","depMath" , null);
-        creerEntite("EN5","depInfo" , null);
-         creerEntite("EN6","depchimie" , null);
-       
-    
-}
+//     void initDb(){
+//            
+//     creerEntite("EN1","decanat" , null);
+//      creerEntite("EN2","scolarité" , null);
+//       creerEntite("EN3","bibliotheque" , null);
+//       creerEntite("EN4","depMath" , null);
+//        creerEntite("EN5","depInfo" , null);
+//         creerEntite("EN6","depchimie" , null);
+//       
+//    
+//}
 }

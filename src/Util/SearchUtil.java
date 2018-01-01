@@ -109,7 +109,7 @@ public class SearchUtil {
         if (!abreviationBean.equals("") && !attributes.isEmpty() && attributes.size() == data.size()) {
             for (int i = 0; i < attributes.size(); i++) {
                 requete += addConstraint(abreviationBean, attributes.get(i), "=", data.get(i));
-            }
+            } 
         }
         return requete;
     }

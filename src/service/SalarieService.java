@@ -61,8 +61,10 @@ sal.setId(id);
   sal.setRegion(region);
   sal.setEntiteADministrative( entiteAdministrative);
   
-//  sal.setSalaire(calculSalaire(sal));
+ 
   create(sal);
+    sal.setSalaire(calculSalaire(sal));
+    edit(sal);
   return 1;
 //    }
 }
@@ -87,9 +89,9 @@ public float calculSalaire(Salarie sal)
     
     
 }
-    public List<Salarie>findByEchelle(String iDechelle)
- {
-    return getEntityManager().createQuery("SELECT s FROM Salarie S WHERE S.echelle.iDechelle='" +iDechelle+ "'").getResultList();
+    public List<Salarie>findSalarieByEchelle(String iDechelle)
+ {   
+    return getEntityManager().createQuery("SELECT s FROM Salarie S WHERE S.echelle.id='" +iDechelle+ "'").getResultList();
   
  }
 //    a)	Vérifier que l’employé possède une échelle supérieure à l’échelle minimale exigée par la responsabilité.
@@ -106,5 +108,20 @@ public float calculSalaire(Salarie sal)
                return -1;
 
       }
-
+public List<Salarie>findSalarieByCriteria(Echelle echelle , EntiteAdministrative entiteAdministrative ,Region region)
+ {   String requete ="SELECT s FROM Salarie s WHERE 1=1";
+ if (echelle!=null){
+         
+         requete+=" and s.echelle.id='"+echelle.getId()+"'" ;
+ }if (region!=null){
+         
+         requete+=" and s.region.id='"+region.getId()+"'" ;
+ }
+ if (entiteAdministrative!=null){
+         
+         requete+=" and s.entiteAdministrative.id='"+entiteAdministrative.getId()+"'" ;
+ }
+    return getEntityManager().createQuery(requete).getResultList();
+  
+ }
 }
