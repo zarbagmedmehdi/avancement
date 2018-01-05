@@ -5,11 +5,10 @@
  */
 package service;
 
-import service.*;
 import bean.Classe;
 import bean.Region;
-import static bean.Region_.classe;
-import static javax.xml.ws.Endpoint.create;
+import bean.Salarie;
+import java.util.List;
 
 /**
  *
@@ -54,6 +53,13 @@ public class RegionService extends AbstractFacade<Region>{
          creerRegion("R12","Dakhla-Oued Ed-Dahab","C1");
          
     }
+       public List<Region> findByClass(String cc)
+    {
+
+    
+    return getEntityManager().createQuery("SELECT r FROM Region R WHERE R.class.id='" +cc+ "'").getResultList();
+  
+ } 
     
     
 }

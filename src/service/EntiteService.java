@@ -5,22 +5,31 @@
  */
 package service;
 import bean.EntiteAdministrative;
+import bean.Mandat;
+
 import bean.Salarie;
+import java.util.List;
 /**
  *
  * @author user
  */
 public class EntiteService extends AbstractFacade<EntiteAdministrative> {
+    SalarieService salarieService=new SalarieService();
     
     public EntiteService() {
         super(EntiteAdministrative.class);
     }
-     public int creerEntite(String id, String nom) {
+     public int creerEntite(String id, String nom,Salarie chef) {
 
         EntiteAdministrative e = new EntiteAdministrative();
+      Salarie salarie=salarieService.find(id);
+      if (salarie==null){
+          return -1;
+      }
 
         e.setId(id);
         e.setNom(nom);
+        e.setChef(salarie);
         
        
         create(e);
@@ -39,4 +48,11 @@ public class EntiteService extends AbstractFacade<EntiteAdministrative> {
 //       
 //    
 //}
+     public List<EntiteAdministrative> find (Salarie chef)
+   {
+            return   getEntityManager().createQuery("SELECT e  FROM EntiteAdministrative E WHERE E.salarie.id='" +chef.getId()+ "'").getResultList();
+   }
+      
+//
+
 }

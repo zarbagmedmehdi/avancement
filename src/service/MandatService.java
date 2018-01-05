@@ -6,11 +6,9 @@
 package service;
 
 import Util.DateUtil;
-import static Util.DateUtil.parse;
 import bean.Mandat;
 import bean.Responsabilité;
 import bean.Salarie;
-import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -57,7 +55,12 @@ public class MandatService  extends AbstractFacade<Mandat>{
            creerMandat("M2", "R2", "09-12-2017", "08-12-2022");
             creerMandat("M3", "R3", "09-12-2017", "08-12-2019");
       }
-          
+      public List<Mandat>findCourant(Salarie salarie) 
+      {
+          return getEntityManager().createQuery("SELECT m FROM Mandat M WHERE M.salarie.id='" +salarie.getId()+ "'").getResultList();
+   
+      }
+     
 
         
     

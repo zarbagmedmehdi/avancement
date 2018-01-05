@@ -14,6 +14,7 @@ import bean.Mandat;
 import bean.Region;
 import bean.Responsabilité;
 import bean.Salarie;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -89,9 +90,9 @@ public float calculSalaire(Salarie sal)
     
     
 }
-    public List<Salarie>findSalarieByEchelle(String iDechelle)
+    public List<Salarie>findSalarieByEchelle(Echelle echelle,Region region)
  {   
-    return getEntityManager().createQuery("SELECT s FROM Salarie S WHERE S.echelle.id='" +iDechelle+ "'").getResultList();
+    return getEntityManager().createQuery("SELECT s FROM Salarie S WHERE S.echelle.id='" +echelle.getId()+ "'AND s.region.id='"+region.getId()+"'").getResultList();
   
  }
 //    a)	Vérifier que l’employé possède une échelle supérieure à l’échelle minimale exigée par la responsabilité.
@@ -124,4 +125,33 @@ public List<Salarie>findSalarieByCriteria(Echelle echelle , EntiteAdministrative
     return getEntityManager().createQuery(requete).getResultList();
   
  }
+
+public int nombreSalarie(Echelle echelle,Region region)
+{
+    List<Salarie>es=findSalarieByEchelle( echelle, region);
+    int count=0;
+    for (int i = 0; i < es.size(); i++) {
+      Salarie salarie=es.get(i);
+     
+         count++;
+   
+        
+    }
+    return count;
+        
+    }
+public boolean ChangerRegion(String id1,String id2)
+{
+    Salarie salarie =find(id1);
+    Salarie salarie1 =find(id2);
+  
+  Region e1=salarie.getRegion();
+  Region e2=salarie1.getRegion();
+   salarie.setRegion(e2);
+   salarie.setRegion(e1);
+   return true;
+   
+           
+}
+ 
 }

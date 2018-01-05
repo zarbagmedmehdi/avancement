@@ -7,6 +7,7 @@ package service;
 
 import bean.Echelle;
 import bean.Responsabilité;
+import java.util.List;
 
 /**
  *
@@ -46,4 +47,20 @@ public class ResponsabiliteService extends AbstractFacade<Responsabilité> {
 //     creerRes("R4", "cordinateur BCG ", "E10",3000);
 //     creerRes("R5", "chef scolarité ", "E9",2500);
      }
+   public List<Responsabilité> find (float montant,String idEchelleMin)
+   {
+        String requete ="SELECT r FROM Responsabilité  R WHERE 1=1";
+
+ if (montant!=0){
+         
+         requete+=" and R.montant='"+montant+"'" ;
+ }
+ if (idEchelleMin!=null){
+         
+         requete+=" and R.id='"+idEchelleMin+"'" ;
+ }
+    return getEntityManager().createQuery(requete).getResultList();
+  
+ 
+   }
 }

@@ -5,8 +5,8 @@
  */
 package service;
 
-import service.*;
 import bean.Classe;
+import java.util.List;
 
 /**
  *
@@ -35,4 +35,12 @@ public class ClasseService extends AbstractFacade<Classe> {
 
         creerClasse("C3", "C", 1);
     }
+    public Class findClass(String id)
+    {
+        
+    return (Class) getEntityManager().createQuery("SELECT c  FROM Class C WHERE C.id='" +id+ "'").getSingleResult();
+  
+ }
+    
+            
 }
