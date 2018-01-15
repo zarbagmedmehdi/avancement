@@ -140,18 +140,136 @@ public int nombreSalarie(Echelle echelle,Region region)
     return count;
         
     }
-public boolean ChangerRegion(String id1,String id2)
+public int SubstituerRegion(Salarie s1,Salarie s2)
 {
-    Salarie salarie =find(id1);
-    Salarie salarie1 =find(id2);
+   
   
-  Region e1=salarie.getRegion();
-  Region e2=salarie1.getRegion();
-   salarie.setRegion(e2);
-   salarie.setRegion(e1);
-   return true;
+  Region e1=s1.getRegion();
+  Region e2=s2.getRegion();
+  EntiteAdministrative entite1=s1.getEntiteADministrative();
+   EntiteAdministrative entite2=s2.getEntiteADministrative();
+  
+  if(entite1==entite2) {
+   s1.setRegion(e2);
+   s2.setRegion(e1);
+   edit(s1);
+   edit(s2);
+   return 1;
+  }
+  else {return -1;
+  }
    
            
 }
- 
+public int changerRegion(Region region,Salarie salarie)
+{
+    Classe cc= region.getClasse();
+   Region n=salarie.getRegion();
+   Classe nn=n.getClasse();
+    if(cc.getCoef()>nn.getCoef())
+    {
+        salarie.setRegion(region);
+        edit(salarie);
+        calculSalaire(salarie);
+        edit(salarie);
+         return 1;
+    }
+    else
+    {
+        return -1;
+    }
+   
+        
+
+
+    
+    
+        
 }
+public float SalaireDeEntite(EntiteAdministrative entiteAdministrative,Region region )
+ {
+     float Deponse=0;
+     
+     List<Salarie>e=findSalarieByCriteria( null, entiteAdministrative,region);
+        int i;
+     for(i=0;i<e.size();i++)
+     {
+        Salarie salarie=e.get(i);
+        Deponse= Deponse+salarie.getSalaire();
+        
+        
+     }
+    return Deponse;
+ }
+ public float m(EntiteAdministrative entiteAdministrative,Region region )
+ {
+     
+  
+     List<Salarie>e=findSalarieByCriteria( null, entiteAdministrative,region);
+    Salarie salarie=e.get(0);
+     float min=salarie.getSalaire();
+     
+        int i;
+     for(i=0;i<e.size();i++)
+     {
+        Salarie s=e.get(i);
+        if(s.getSalaire()<min)
+        {
+            min=s.getSalaire();
+        }
+        
+        
+        
+        
+     }
+     return min;
+ }
+ public float k(EntiteAdministrative entiteAdministrative,Region region )
+ {
+     
+     Salarie salarie=new Salarie();
+     List<Salarie>e=findSalarieByCriteria( null, entiteAdministrative,region);
+     salarie=e.get(0);
+     float max=salarie.getSalaire();
+     
+        int i;
+     for(i=0;i<e.size();i++)
+     {
+        Salarie s=e.get(i);
+        if(s.getSalaire()>max)
+        {
+            max=s.getSalaire();
+        }
+        
+        
+        
+        
+     }
+     return max;
+ }
+        
+     public int Promotion (Salarie salarie,Echelle echelle,Echellon echellon)
+    {
+      
+        Echelle a=salarie.getEchelle();
+        if(a.getSalaireBase()<echelle.getSalaireBase())
+        {
+            salarie.setEchelle(echelle);
+            edit(salarie);
+            salarie.setEchellon(echellon);
+            edit(salarie);
+            calculSalaire(salarie);
+            edit(salarie);
+            
+             
+        }
+        else
+        {
+            return -1;
+        }
+        return 1;
+    }
+        
+    }
+    
+

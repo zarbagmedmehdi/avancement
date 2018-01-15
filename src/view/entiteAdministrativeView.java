@@ -9,6 +9,7 @@ import bean.Echelle;
 import bean.Salarie;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import service.EntiteService;
 import service.SalarieService;
 
@@ -152,8 +153,12 @@ public class entiteAdministrativeView extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     Salarie chef= es.get(jComboBox1.getSelectedIndex()-1);
         int s=entiteService.creerEntite(jTextField1.getText(), jTextField2.getText(), chef);
+        if (s==1){
+        JOptionPane.showMessageDialog(null, "a ete cree", "valide", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+        else {
+             JOptionPane.showMessageDialog(null, "cc", "cc", JOptionPane.ERROR_MESSAGE);
+        }}
     /**
      * @param args the command line arguments
      */

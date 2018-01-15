@@ -290,7 +290,7 @@ j.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-Cc j=new Cc();
+RechercheView j=new RechercheView();
 j.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 

@@ -57,7 +57,8 @@ public class RegionService extends AbstractFacade<Region>{
     {
 
     
-    return getEntityManager().createQuery("SELECT r FROM Region R WHERE R.class.id='" +cc+ "'").getResultList();
+    return getEntityManager().createQuery(" select r FROM Region r "
+                + " WHERE r.classe.id='" +cc + "'").getResultList();
   
  } 
     

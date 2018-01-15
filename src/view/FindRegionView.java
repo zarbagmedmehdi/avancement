@@ -143,16 +143,17 @@ public class FindRegionView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-Classe classe=new Classe();
-        if(jComboBox1.getSelectedIndex()==0) {  classe =null;}
-     else { classe=classes. get(jComboBox1.getSelectedIndex()-1) ;
+
+        
+  Classe  classe=classes. get(jComboBox1.getSelectedIndex()-1) ;
+   
      List<Region> regions=regionService.findByClass(classe.getId()) ;
      regionHelper.setList(regions);
-     } 
+//      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**

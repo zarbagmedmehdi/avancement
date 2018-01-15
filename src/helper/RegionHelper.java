@@ -26,7 +26,7 @@ private static AbstractHelperItem[] titres;
     static {
         titres = new AbstractHelperItem[]{
             new AbstractHelperItem("id ", "id"),
-            new AbstractHelperItem("nom", "nom"),
+            new AbstractHelperItem("nomRegion", "nomRegion"),
             
         };
 

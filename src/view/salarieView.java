@@ -448,7 +448,7 @@ Region  region =   regions.get(jComboBox3.getSelectedIndex()-1);
 List<Salarie> ss=salarieService.findAll();
 Salarie chef=  ss.get(jTable3.getSelectedColumn()-1);
 List<Echellon> ee=echellonService.findAll();
-     Echellon echellon=ee.get(jTable4.getSelectedColumn()-1);
+     Echellon echellon=ee.get(jTable4.getSelectedRow());
 
 if(jRadioButton1.isSelected()){
    
@@ -498,6 +498,8 @@ if(jRadioButton1.isSelected()==false && jRadioButton2.isSelected()==false )
     }//GEN-LAST:event_jComboBox2MouseClicked
 
     private void jTable5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable5MouseClicked
+         EntiteAdministrative entite =entiteAdministrativeHelper.getSelected();                               
+                                        
     }//GEN-LAST:event_jTable5MouseClicked
 
     /**

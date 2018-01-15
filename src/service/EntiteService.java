@@ -22,14 +22,12 @@ public class EntiteService extends AbstractFacade<EntiteAdministrative> {
      public int creerEntite(String id, String nom,Salarie chef) {
 
         EntiteAdministrative e = new EntiteAdministrative();
-      Salarie salarie=salarieService.find(id);
-      if (salarie==null){
-          return -1;
-      }
+      
+      
 
         e.setId(id);
         e.setNom(nom);
-        e.setChef(salarie);
+        e.setChef(chef);
         
        
         create(e);
